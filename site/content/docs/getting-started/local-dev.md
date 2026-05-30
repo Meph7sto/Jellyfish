@@ -4,6 +4,38 @@ weight: 2
 description: "启动前后端并完成本地联调。"
 ---
 
+## Windows 一键启动
+
+在仓库根目录执行：
+
+```powershell
+.\start-dev.bat
+```
+
+该脚本会自动完成这些准备工作：
+
+- 不存在 `backend/.env` 时，自动从 `.env.example` 复制
+- 执行 `backend/` 下的 `uv sync`
+- 启动前自动执行 `backend/init_db.py` 初始化数据库表结构
+- 以不改写锁文件的方式执行 `front/` 下的 `pnpm install`
+- 分别在独立 PowerShell 窗口中启动后端和前端
+
+常用可选参数：
+
+```powershell
+.\start-dev.ps1 -SkipInstall
+.\start-dev.ps1 -IncludeSite
+```
+
+- `-SkipInstall`：首次安装完成后，后续启动时跳过依赖安装
+- `-IncludeSite`：同时启动 `site/` 的 Hugo 本地预览
+
+关闭这一组本地开发窗口时，在仓库根目录执行：
+
+```powershell
+.\stop-dev.bat
+```
+
 ## 启动后端
 
 ```bash

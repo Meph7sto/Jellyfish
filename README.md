@@ -224,6 +224,33 @@ docker compose --env-file deploy/compose/.env -f deploy/compose/docker-compose.y
 
 ## 🧑‍💻 Local Development
 
+### One-click startup on Windows
+
+From the repository root:
+
+```powershell
+.\start-dev.bat
+```
+
+This launcher will:
+
+- create `backend/.env` from `.env.example` when needed
+- run `uv sync` for `backend/`
+- initialize the backend database schema before the API starts
+- run a lockfile-safe `pnpm install` for `front/`
+- open backend and frontend dev servers in separate PowerShell windows
+
+Useful options:
+
+- `.\start-dev.ps1 -SkipInstall` skips dependency installation on later runs
+- `.\start-dev.ps1 -IncludeSite` also starts the Hugo docs site preview
+
+To close the tracked dev windows later:
+
+```powershell
+.\stop-dev.bat
+```
+
 ### Backend
 
 ```bash

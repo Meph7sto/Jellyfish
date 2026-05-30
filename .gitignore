@@ -22,3 +22,4 @@ htmlcov/
 .jellyfish.db
 jellyfish.db
 .env
+.jellyfish-dev-processes.json
